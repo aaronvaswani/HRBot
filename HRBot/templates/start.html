@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>HRBot</h1>
+    <h3>A web implementation of <a href="https://github.com/gunthercox/ChatterBot">ChatterBot</a> using Flask.</h3>
+    <div>
+      <table>
+        <tr>
+          <p>Hi! Please enter your name:</p>
+        </tr>
+        <tr>
+          <form action="" method="POST">
+          <input type="text" name="username" placeholder="Name" value="{{request.form.username}}">
+        </tr>
+        <tr>
+          <p>And also your job function:</p>
+        </tr>
+        <tr>
+          <input type="text" name="jobFunction" placeholder="Function" value="{{request.form.jobFunction}}">
+        </tr>
+        <tr>
+          <input type="submit" value="Submit">
+        </form>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

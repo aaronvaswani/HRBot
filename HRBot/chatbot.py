@@ -1,0 +1,1 @@
+chatbot = ChatBot('Training Example')
