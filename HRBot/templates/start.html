@@ -5,28 +5,29 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>
-    <h1>HRBot</h1>
-    <h3>A web implementation of <a href="https://github.com/gunthercox/ChatterBot">ChatterBot</a> using Flask.</h3>
-    <div>
+    <h1>Herbert - The HRBot</h1>
+    <h3>Herbert here! Happily hoping to help!</h3>
+    <div style="display:flex; justify-content: center;">
+    <form action="/login" method="POST">
       <table>
         <tr>
-          <p>Hi! Please enter your name:</p>
+          <td><p>Hi! Please enter your name:</p></td>
         </tr>
         <tr>
-          <form action="" method="POST">
-          <input type="text" name="username" placeholder="Name" value="{{request.form.username}}">
+          <td><input type="text" name="username" placeholder="Name" value="{{request.form.username}}"></td>
         </tr>
         <tr>
-          <p>And also your job function:</p>
+          <td><p>And also your job function:</p></td>
         </tr>
         <tr>
-          <input type="text" name="jobFunction" placeholder="Function" value="{{request.form.jobFunction}}">
+          <td><input type="text" name="jobFunction" placeholder="Function" value="{{request.form.jobFunction}}"></td>
         </tr>
-        <tr>
-          <input type="submit" value="Submit">
-        </form>
+        <tr></tr>
+        <tr align="center">
+          <td><input type="submit" value="Submit"></td>    
         </tr>
       </table>
+    </form>
     </div>
   </body>
 </html>

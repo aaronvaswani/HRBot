@@ -1,22 +1,13 @@
 body {
-    font-family: sans-serif;
-    background-color: white;
+    font-family: Garamond;
 }
 
 h1 {
-    color: white;
+    color: black;
     margin-bottom: 0;
     margin-top: 0;
     text-align: center;
-    font-size: 40px;    
-}
-
-#headerBg {
-    background-color: #269AEA;
-}
-
-#header2 {
-    background-color: #F4F4F4;   
+    font-size: 40px;
 }
 
 h3 {
@@ -29,19 +20,14 @@ h3 {
 #chatbox {
     margin-left: auto;
     margin-right: auto;
-    border-style: solid;
-    border-radius: 15px;
-    padding: 0px 10px 10px 10px;
-    width: 50%;
-    margin-top: 30px;
-    box-shadow:5px 10px 100px #cccccc;
-    background-color: white;
+    width: 40%;
+    margin-top: 60px;
 }
 
 #userInput {
     margin-left: auto;
     margin-right: auto;
-    width: 52%;
+    width: 40%;
     align-self: flex-end;    
 }
 
@@ -49,36 +35,33 @@ h3 {
     width: 87%;
     border: none;
     border-bottom: 3px solid #9fcbff;
-    font-family: inherit;
+    font-family: monospace;
     font-size: 17px;
 }
 
 #buttonInput {
     padding: 3px;
-    font-family: inherit;
-    font-size: 18px;
-    color: white;
-    border-radius: 10px;
-    background-image: linear-gradient(to right, #63B9F9 , #58D8F2);
+    font-family: monospace;
+    font-size: 17px;
 }
 
 .userText {
     color: white;
-    font-family: inherit;
+    font-family: monospace;
     font-size: 17px;
     text-align: right;
     line-height: 30px;
 }
 
 .userText span {
-    background-color: rgb(109, 204, 242);
+    background-color: #9fcbff;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 2px;
 }
 
 .botText {
     color: white;
-    font-family: inherit;
+    font-family: monospace;
     font-size: 17px;
     text-align: left;
     line-height: 30px;
@@ -87,7 +70,7 @@ h3 {
 .botText span {
     background-color: #6DF2A8;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 2px;
 }
 
 #tidbit {
@@ -99,10 +82,13 @@ h3 {
 
 #centerDiv {
     width: 100%;
+    display: flex;    
+    flex-direction: column;
 }
 
 #container {    
     width: 100%;
+    height: auto;
     overflow: hidden;
     text-align:center;
 }

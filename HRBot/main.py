@@ -1,6 +1,6 @@
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, Response
 import logging
 import time
 
@@ -42,13 +42,15 @@ def login():
         enteredname = request.form['username']
         enteredfunction = request.form['jobFunction']
 
-        flash(enteredname)
-        flash(enteredfunction)
+        if enteredname != "" and enteredfunction != "":
+            if (enteredfunction == "Reward"):
+               loadReward()
+            #if entered function is x, load x, repeat for y,z etc
+            return render_template("index.html")
+        else:
+            return Response('<p>Login failed</p>')
 
-        if enteredname != "":
-            return redirect(url_for('chatbot'))
-
-@app.route("/", methods=['GET'])
+@app.route("/app", methods=['GET'])
 def chatbot():
     return render_template("index.html")
 
@@ -56,6 +58,9 @@ def chatbot():
 def get_bot_response():
     userText = request.args.get('msg')
     return str(bot.get_response(userText))
+
+app.secret_key = 'super secret key'
+app.config['SESSION_TYPE'] = 'filesystem'
 
 if __name__ == "__main__":
     app.run()
@@ -66,12 +71,6 @@ def loadReward():
     trainer.train("./Reward/rewardHealth.yml")
     trainer.train("./Reward/rewardInsurance.yml")
     trainer.train("./Reward/rewardPension.yml")
-
-#user = input('what is your name...? ')
-#time.sleep(1)
-#print('Nice to meet you ' + user + "!")
-#time.sleep(1.5)
-#function = input('and which job function do you work in? \nReward, Recruitment or EHS\n')
 
 #if the users name is X then it loads specific training data
 #if (function == "Reward"):
