@@ -6,11 +6,15 @@ import time
 
 app = Flask(__name__)
 
+#driver = webdriver.Chrome()
+
 bot = ChatBot(
             'Bob',
-            # remove the below line to start the chatbot learning
+            
             # read_only=True,
-            storage_adapter='chatterbot.storage.SQLStorageAdapter',
+            storage_adapter='chatterbot.storage.MongoDatabaseAdapter',
+            database = monogodb_name,
+            database_uri = mongodb_uri,
             # remove the below line when you want 
             # database_uri=None,
             #input_adapter='chatterbot.input.TerminalAdapter',
@@ -24,7 +28,13 @@ bot = ChatBot(
     ]
 )
 
-#bot.set_trainer(ChatterBotCorpusTrainer)
+def loadReward():
+    trainer.train("./Reward/rewardBalance.yml")
+    trainer.train("./Reward/rewardGeneral.yml")
+    trainer.train("./Reward/rewardHealth.yml")
+    trainer.train("./Reward/rewardInsurance.yml")
+    trainer.train("./Reward/rewardPension.yml")
+
 trainer = ChatterBotCorpusTrainer(bot)
 # trainer.train("chatterbot.corpus.english")
 # trainer.train("./trivial.yml")
@@ -57,20 +67,17 @@ def chatbot():
 @app.route("/get")
 def get_bot_response():
     userText = request.args.get('msg')
-    return str(bot.get_response(userText))
+    if (userText == "break" or userText == "bye"):
+        return str("bye!")
+        #driver.refresh()
+    else:
+        return str(bot.get_response(userText))
 
 app.secret_key = 'super secret key'
 app.config['SESSION_TYPE'] = 'filesystem'
 
 if __name__ == "__main__":
     app.run()
-
-def loadReward():
-    trainer.train("./Reward/rewardBalance.yml")
-    trainer.train("./Reward/rewardGeneral.yml")
-    trainer.train("./Reward/rewardHealth.yml")
-    trainer.train("./Reward/rewardInsurance.yml")
-    trainer.train("./Reward/rewardPension.yml")
 
 #if the users name is X then it loads specific training data
 #if (function == "Reward"):
